@@ -42,6 +42,7 @@ id expense
 if [ $? -ne 0 ]
 then
     useradd expense
+    Validate $? "craete expense user"
 else 
     echo -e "user is already created $Y ......SKIPPING $N"
 fi
