@@ -37,3 +37,6 @@ Validate $? "enabling latest nodejs"
 
 dnf install nodejs -y &>>$LOGFILE
 Validate $? "Installing nodejs"
+
+useradd expense $>>$LOGFILE
+Validate $? "add expense user"
