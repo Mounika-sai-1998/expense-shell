@@ -12,12 +12,12 @@ Y="\e[33m"
 B="\e[34m"
 N="\e[0m"
 
-Validate(){
+VALIDATE(){
     if [ $1 -eq 0 ]
     then
          echo  -e "$2 is $G SUCCESS......$N"
     else
-        echo -e "$2 is $R failure.......$N"
+         echo -e "$2 is $R failure.......$N"
     fi
 }
 if [ $USERID -ne 0 ]
@@ -29,4 +29,4 @@ else
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
-Validate $@  "insallation of mysql server"
+VALIDATE $@  "insallation of mysql server"
