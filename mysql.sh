@@ -44,6 +44,7 @@ VALIDATE $? "starting my sql"
 #mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 #VALIDATE $? "Setting password"
 
+#Below code will be useful for idempotent nature
 mysql -h db.mounikasai.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
