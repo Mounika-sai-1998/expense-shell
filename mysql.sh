@@ -15,9 +15,9 @@ N="\e[0m"
 Validate(){
     if [ $1 -eq 0 ]
     then
-         echo  -e "$2  $G SUCCESS......$N"
+         echo  -e "$2 is $G SUCCESS......$N"
     else
-        echo "$2  $R failure.......$N"
+        echo -e "$2 is $R failure.......$N"
     fi
 }
 if [ $USERID -ne 0 ]
