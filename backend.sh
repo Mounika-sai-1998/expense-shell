@@ -80,7 +80,7 @@ Validate $? "starting service"
 systemctl enable backend &>>$LOGFILE
 Validate $? "enabling service"
 
-dnf install mysql -y $>>$LOGFILE
+dnf install mysql -y &>>$LOGFILE
 Validate $? "installing client"
 
 mysql -h db.mounikasai.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
