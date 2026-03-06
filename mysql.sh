@@ -49,6 +49,7 @@ mysql -h db.mounikasai.shop -uroot -p${mysql_root_password} -e 'show databases;'
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+    VALIDATE $? "my sql root password setup"
 else
     echo -e "Password is already setup $Y .......SKIPPING"
 fi
