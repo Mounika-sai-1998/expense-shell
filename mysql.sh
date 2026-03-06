@@ -28,5 +28,5 @@ else
      echo " It is a super user"
 fi
 
-dnf install mysql-server -y
-VALIDATE $@  "insallation of mysql server"
+dnf install mysql-server -y &>>$LOGFILE
+Validate $@  "insallation of mysql server"
