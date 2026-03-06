@@ -9,7 +9,7 @@ LOGFILE=/tmp/$SCRIPT_NAME/$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-G="\e[34m"
+B="\e[34m"
 N="\e[0m"
 
 Validate(){
@@ -29,5 +29,5 @@ else
     echo "it is a super user"
 fi
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>>$LOGFILE
 Validate $? "disabiling default nodejs"
