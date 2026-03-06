@@ -6,6 +6,9 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
 
+echo "Enter DB password : "
+read mysql_root_password
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -63,3 +66,31 @@ cd /app
 
 npm install &>>$LOGFILE
 Validate $? "install nodejs dependencies"
+
+
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+Validate $? "copying backend file"
+
+systemctl daemon-reload &>>$LOGFILE
+Validate $? "daemon reload"
+
+systemctl start backend &>>$LOGFILE
+Validate $? "starting service"
+
+systemctl enable backend &>>$LOGFILE
+Validate $? "enabling service"
+
+dnf install mysql -y $>>$LOGFILE
+Validate $? "installing client"
+
+mysql -h db.mounikasai.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+Validate $? "loading schema"
+
+systemctl restart backend &>>$LOGFILE
+Validate $? "restarting the service"
+
+
+
+
+
+
