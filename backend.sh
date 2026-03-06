@@ -15,9 +15,9 @@ N="\e[0m"
 Validate(){
     if [ $1 -eq 0 ]
     then 
-        echo -e "$2 is $G SUCCESS....$N"
+        echo -e "$2 is $G .....SUCCESS $N"
     else
-        echo -e "$2 is $R FAILURE....$N"
+        echo -e "$2 is $R .....FAILURE $N"
     fi
 }
 
@@ -38,5 +38,10 @@ Validate $? "enabling latest nodejs"
 dnf install nodejs -y &>>$LOGFILE
 Validate $? "Installing nodejs"
 
-useradd expense 
-Validate $? "add expense user"
+id exprense
+if [ $? -ne 0 ]
+then
+    useradd expense
+else 
+    echo -e "user is already created $Y ......SKIPPING $N"
+fi
