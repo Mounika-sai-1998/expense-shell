@@ -31,3 +31,6 @@ fi
 
 dnf module disable nodejs -y &>>$LOGFILE
 Validate $? "disabiling default nodejs"
+
+dnf module enable nodejs:24 -y
+Validate $? "enabling latest nodejs"
