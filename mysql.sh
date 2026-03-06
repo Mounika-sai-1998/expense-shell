@@ -13,11 +13,11 @@ B="\e[34m"
 N="\e[0m"
 
 VALIDATE(){
-    if [ $1 -eq 0 ]
+    if [ $1 -ne 0 ]
     then
-        echo -e "$2 is $G SUCCESS...$N"
+        echo -e "$2 is $R FAILURE...$N"
     else
-        echo -e "$2 is $R FAILURE....$N"
+        echo -e "$2 is $G SUCCESS.....$N"
     fi
 }
 if [ $USERID -ne 0 ]
@@ -39,3 +39,5 @@ VALIDATE $? "starting my sql"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 VALIDATE $? "Setting password"
+
+
