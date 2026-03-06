@@ -46,3 +46,20 @@ then
 else 
     echo -e "user is already created $Y ......SKIPPING $N"
 fi
+
+mkdir -p /app &>>$LOGFILE
+# here p is for if there is no directort it create... if  there it does not show any error 
+Validate $? "Creating app directory"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGFILE
+Validate $? "downlading backend file"
+
+cd /app
+
+unzip /tmp/backend.zip &>>$LOGFILE
+Validate $? "Unzipping backend file"
+
+cd /app
+
+npm install &>>$LOGFILE
+Validate $? "install nodejs dependencies"
