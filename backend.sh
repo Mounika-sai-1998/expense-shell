@@ -58,11 +58,8 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 Validate $? "downlading backend file"
 
 cd /app
-
 unzip /tmp/backend.zip &>>$LOGFILE
 Validate $? "Unzipping backend file"
-
-cd /app
 
 npm install &>>$LOGFILE
 Validate $? "install nodejs dependencies"
