@@ -38,7 +38,7 @@ Validate $? "enabling latest nodejs"
 dnf install nodejs -y &>>$LOGFILE
 Validate $? "Installing nodejs"
 
-id exprense
+id expense
 if [ $? -ne 0 ]
 then
     useradd expense
